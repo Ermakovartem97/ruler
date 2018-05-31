@@ -30,6 +30,7 @@ function SecoundLine(){
     context.lineTo(end - 5, 100 - 10);
     context.stroke();
 
+
     //Добавление поля ввода
     //inputCase.innerHTML = "<input id='secondInput' type='number' maxlength='1' onchange='CheckB()' style='width: 20px' >";
     inputCase.style.marginLeft = begin + (end - begin) / 2 - 10 + 'px';
