@@ -1,0 +1,28 @@
+main{
+    width: 875px;
+    margin: 100px auto;
+    border-radius: 2px;
+}
+h1{
+    text-align: center;
+    margin: 100px;
+}
+#line{
+    position: relative;
+    top: 25px;
+}
+#inputContainer{
+    position: relative;
+    top: 25px;
+}
+#firstNum{
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+#secondNum{
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+#secondInput{
+    position: relative;
+}
