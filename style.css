@@ -1,7 +1,7 @@
 main{
+    font-size: 25px;
     width: 875px;
     margin: 100px auto;
-    border-radius: 2px;
 }
 h1{
     text-align: center;
@@ -12,6 +12,7 @@ h1{
     top: 25px;
 }
 #inputContainer{
+    font-size: 30px;
     position: relative;
     top: 25px;
 }
@@ -23,7 +24,19 @@ h1{
     padding: 2px 4px;
     border-radius: 3px;
 }
+#firstInput{
+    font-size: 30px;
+}
 #secondInput{
+    font-size: 30px;
     position: relative;
-    margin: auto;
+    z-index: 9999;
+}
+#BInput{
+    position: relative;
+}
+#answer{
+    position: relative;
+    top: -6px;
+    font-size: 30px;
 }

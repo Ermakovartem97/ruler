@@ -14,9 +14,8 @@ function FirstLine () {
     context.stroke();
 
     //Добавление поля ввода
-    inputCase.innerHTML = "<input id='firstInput' type='number' maxlength='1' onchange='CheckA()' style='width: 20px' >";
-    inputCase.style.marginLeft = end / 2 + 'px';
-
+    inputCase.innerHTML = "<input id='firstInput' type='text' maxlength='1'  onchange='CheckA()' style='width: 20px' >";
+    document.getElementById('firstInput').style.marginLeft = end / 2 + 'px';
 }
 
 //Функция создаёт вторую линию и поле ввода
@@ -32,10 +31,12 @@ function SecoundLine(){
 
 
     //Добавление поля ввода
-    //inputCase.innerHTML = "<input id='secondInput' type='number' maxlength='1' onchange='CheckB()' style='width: 20px' >";
-    inputCase.style.marginLeft = begin + (end - begin) / 2 - 10 + 'px';
-    inputCase.style.top = '5px';
+    inputCase.innerHTML = "<span id='AInput'>" + a + "</span><input id='secondInput' type='text' maxlength='1' onchange='CheckB()' style='width: 20px' >";
+    document.getElementById('AInput').style.marginLeft = 36 + a * cm / 2 -10 + 'px';
+    document.getElementById('secondInput').style.marginLeft = begin + (end - begin) / 2 - 15 - (36 + a * cm / 2)  + 'px';
+    document.getElementById('secondInput').style.top = '30px';
 }
+
 //Проверка ввода 1 числа
 function CheckA() {
     let checkNumber = document.getElementById('firstInput').value;
@@ -43,31 +44,53 @@ function CheckA() {
         document.getElementById('firstNum').style.background = 'orange';
         document.getElementById('firstInput').style.color = 'red';
     }else {
-        document.getElementById('firstInput').parentNode.removeChild(document.getElementById('firstInput'));
+        document.getElementById('firstNum').style.background = '';
         inputCase.innerHTML = '<span id="firstInput">' + a + '</spani>';
+
         SecoundLine();
     }
 }
 
+//Проверка ввода 2 числа
 function CheckB() {
     let checkNumber = document.getElementById('secondInput').value;
     if (checkNumber !== b) {
         document.getElementById('secondNum').style.background = 'orange';
         document.getElementById('secondInput').style.color = 'red';
     }else {
-        document.getElementById('secondInput').parentNode.removeChild(document.getElementById('secondInput'));
+        document.getElementById('secondNum').style.background = '';
+        inputCase.innerHTML = "<span id='AInput'>" + a + "</span><span id='BInput'>" + b + "</span>";
+        document.getElementById('AInput').style.marginLeft = 36 + a * cm / 2 -10 + 'px';
+        document.getElementById('BInput').style.marginLeft = 36 + cm * a + (cm * sum - cm * a) / 2 - (36 + a * cm / 2) - 15 + 'px';
+        document.getElementById('BInput').style.top = '30px';
+        document.getElementById('sumNum').innerHTML = '<input id="answer" type="text" maxlength="2" onchange="CheckSum()" style="width: 40px">';
     }
 }
+
+//Проверка ввода суммы
+function CheckSum() {
+    let checkNumber = document.getElementById('answer').value;
+    console.log(sum,checkNumber);
+    if (checkNumber !== sum1){
+        document.getElementById('answer').style.color = 'red';
+    }else {
+        document.getElementById('answer').style.color = '';
+        document.getElementById('sumNum').innerHTML = "<span>" + sum + "</span>";
+    }
+
+}
+
 
 //Создание двух чисел и суммы
 const cm = 39;
 let a = GettRandInt(6, 9);
 let b = GettRandInt(11-a, 14-a);
 let sum = parseInt(a) + parseInt(b);
+let sum1 = sum+'';
 
 //Создание уравнения
 equation = document.getElementById('Eq');
-equation.innerHTML = "<span id='firstNum'>" + a + "</span> + <span id='secondNum'>" + b + "</span> = <span>?</span>";
+equation.innerHTML = "<span id='firstNum'>" + a + "</span> + <span id='secondNum'>" + b + "</span> = <span id='sumNum'>?</span>";
 
 //Создание переменных для рисования линий
 let inputCase = document.getElementById("inputContainer");
